@@ -16,8 +16,8 @@ function Dispense () {
         strip.clear()
         strip.show()
     }
-    for (let index = 0; index <= TurnsPerFeed - 1; index++) {
-        ShowPortionSize(neopixel.colors(NeoPixelColors.Blue), 4 - (index + 1))
+    for (let index = 0; index <= TurnsPerFeedOptions.indexOf(TurnsPerFeed); index++) {
+        ShowPortionSize(neopixel.colors(NeoPixelColors.Blue), index + 1)
         robotbit.StepperDegree(robotbit.Steppers.M2, -360)
     }
     strip.clear()
@@ -34,12 +34,10 @@ function ShowPortionSize (colour: number, ledCount: number) {
     strip.clear()
     strip.show()
     for (let index = 0; index <= 3; index++) {
-        if (ledCount >= TurnsPerFeedOptions[index]) {
+        if (ledCount > index) {
             strip.setPixelColor(index, neopixel.colors(NeoPixelColors.Green))
         }
-    }
-    for (let index = 0; index <= 3; index++) {
-        if (ledCount == TurnsPerFeedOptions[index]) {
+        if (ledCount == index + 1) {
             strip.setPixelColor(index, colour)
         }
     }
