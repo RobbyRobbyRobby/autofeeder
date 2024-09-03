@@ -1,3 +1,13 @@
+radio.onReceivedNumber(function (receivedNumber) {
+    radio.sendNumber(enumRequestReceived)
+    if (receivedNumber == enumDispense) {
+        Dispense()
+    }
+    if (receivedNumber == enumCycleTurnsPerFeed) {
+        CycleTurnsPerFeed()
+    }
+    radio.sendNumber(enumRequestComplete)
+})
 function CycleTurnsPerFeed () {
     TempArrayIndex = TurnsPerFeedOptions.indexOf(TurnsPerFeed) + 1
     if (TempArrayIndex >= TurnsPerFeedOptions.length) {
@@ -50,6 +60,10 @@ input.onButtonPressed(Button.B, function () {
     CycleTurnsPerFeed()
 })
 let TempArrayIndex = 0
+let enumRequestComplete = 0
+let enumRequestReceived = 0
+let enumDispense = 0
+let enumCycleTurnsPerFeed = 0
 let TurnsPerFeed = 0
 let TurnsPerFeedOptions: number[] = []
 let strip: neopixel.Strip = null
@@ -63,7 +77,9 @@ TurnsPerFeedOptions = [
 ]
 TurnsPerFeed = TurnsPerFeedOptions[0]
 CycleTurnsPerFeed()
-let enumCycleTurnsPerFeed = 1
-let enumDispense = 2
-let enumRequestReceived = 3
-let enumRequestComplete = 4
+enumCycleTurnsPerFeed = 1
+enumDispense = 2
+enumRequestReceived = 3
+enumRequestComplete = 4
+radio.setGroup(1)
+radio.setTransmitSerialNumber(true)
