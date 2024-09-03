@@ -3,9 +3,9 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "radio": "*",
         "microphone": "*",
-        "robotbit": "github:kittenbot/pxt-robotbit#v0.4.6"
+        "robotbit": "github:kittenbot/pxt-robotbit#v0.4.6",
+        "radio": "*"
     },
     "files": [
         "main.blocks",
